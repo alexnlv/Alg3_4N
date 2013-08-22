@@ -5,13 +5,18 @@ public class Principal {
 
 	public static Jogador[] j = new Jogador[4];
 	public static Baralho b = new Baralho();
+	public static String cartaMesa = null;
+	
 	
 		public static void main(String[] args) {
-				
+		
+			
 		
 	
 		nomearJogadores(j);
 		distribuirCartas(b);
+		
+		
 		
 		for (int i = 0; i < 4; i++) {
 			
@@ -19,9 +24,34 @@ public class Principal {
 		
 		}
 		
+		System.out.println("A carta da mesa é: "+ cartaMesa);
 		
-
+		
+		realizarJogada(j[0]);
+		
 	}
+
+		private static void realizarJogada(Jogador jogador) {
+			
+			Scanner scan = new Scanner(System.in);
+			String aux = null;
+			int indice = 0;
+			
+			System.out.println(jogador.getNome() + " a carta da mesa é: "+cartaMesa+ "\n" 
+			+"As suas cartas são: "+jogador.mostrarCartas()+ "\n"
+			+"Selecione a carta a ser descartada \n");
+			aux = scan.nextLine();
+			indice = Integer.parseInt(aux);
+			// transformar para inteiro
+			jogador.selecionarCarta(indice);
+			
+			if(jogador.selecionarCarta(indice).equals(cartaMesa)){
+				
+			
+			}
+			
+			
+		}
 
 		private static void mostrarCartasJogador(Jogador jogador) {
 			
@@ -37,13 +67,13 @@ public class Principal {
 				
 				for (int x = 0; x < 5; x++) {
 					
-					j[i].comprarCarta(b.cartas.get(x).toString());
-					b.cartas.remove(x);
+					j[i].comprarCarta(b.cartas.get(0).toString());
+					b.cartas.remove(0);
 				}
 			}
 			
-			
-			
+			cartaMesa = b.cartas.get(0).toString();
+			b.cartas.remove(0);
 		}
 
 		private static void nomearJogadores(Jogador[] j) {

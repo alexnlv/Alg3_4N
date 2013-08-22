@@ -38,5 +38,19 @@ public class Jogador {
 		
 		return cartas;
 	}
+	
+	public boolean contemCarta(String cartaSelecionada) {
+		
+		boolean resultado = false;
+		
+		if(cartas.contains(cartaSelecionada)){
+			
+			resultado = true;
+		
+		} 		
+		
+		return resultado;
+
+	}
 
 }
