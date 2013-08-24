@@ -24,7 +24,9 @@ public class Principal {
 		
 		}
 		
-		System.out.println("A carta da mesa é: "+ cartaMesa);
+		clearConsole();
+		
+		//System.out.println("A carta da mesa e: "+ cartaMesa);
 		
 		
 		realizarJogada(j[0]);
@@ -37,13 +39,15 @@ public class Principal {
 			String aux = null;
 			int indice = 0;
 			
-			System.out.println(jogador.getNome() + " a carta da mesa é: "+cartaMesa+ "\n" 
-			+"As suas cartas são: "+jogador.mostrarCartas()+ "\n"
-			+"Selecione a carta a ser descartada \n");
+			System.out.println(String.format(	"%s, a carta da mesa e: %s \n" +
+												"As suas cartas sao: %s \n" +
+												"Selecione a carta a ser descartada",
+												jogador.getNome(), cartaMesa, jogador.mostrarCartas()));
+		
 			aux = scan.nextLine();
 			indice = Integer.parseInt(aux);
-			// transformar para inteiro
-			jogador.selecionarCarta(indice);
+			
+			   jogador.selecionarCarta(indice);
 			
 			if(jogador.selecionarCarta(indice).equals(cartaMesa)){
 				
@@ -52,10 +56,29 @@ public class Principal {
 			
 			
 		}
-
+		
+		
+		private static void clearConsole() { 
+			try { String os = System.getProperty("os.name");
+			
+					if (os.contains("Win")) { 
+						
+						Runtime.getRuntime().exec("cls"); 
+					
+					} else { 
+						
+						Runtime.getRuntime().exec("clear"); 
+				
+				}
+					} catch (Exception exception) { // Handle exception. } } 
+			}
+		}
+		
+		
+		
 		private static void mostrarCartasJogador(Jogador jogador) {
 			
-			System.out.println("As cartas de "+jogador.getNome()+" são: "+jogador.mostrarCartas());
+			System.out.println(String.format("As cartas de %s sao: %s",jogador.getNome(), jogador.mostrarCartas()));
 			
 		}
 
@@ -85,7 +108,7 @@ public class Principal {
 				
 				j[i] = new Jogador();
 				
-				System.out.println("Digite o nome do " +(i+1)+"º jogador");
+				System.out.println(String.format("Digite o nome do jogador numero %d", i+1));
 				nome = scan.nextLine();
 				
 				j[i].setNome(nome);
@@ -94,7 +117,7 @@ public class Principal {
 			
 			for (int i = 0; i < j.length; i++) {
 				
-				System.out.println(j[i].getNome()+ " é o "+ (i+1) + "º jogador");
+				System.out.println(String.format("%s e o jogador numero %d",j[i].getNome(), i+1));
 			
 			}
 			
