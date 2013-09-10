@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 
 public class Jogador {
 	
@@ -47,10 +49,24 @@ public class Jogador {
 			
 			resultado = true;
 		
-		} 		
+		}
 		
 		return resultado;
 
+	}
+	
+	
+	public void removeCarta(int indice){
+		
+		cartas.remove(indice);
+		
+	
+	}
+	
+	public int qtdeCartas(){
+		
+		return cartas.size();
+			
 	}
 
 }
