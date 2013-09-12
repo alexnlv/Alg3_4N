@@ -1,7 +1,8 @@
 
 public class Ponto {
 	
-	private int x = 0;
-	private int y = 0;
+	public int x = 0;
+	public int y = 0;
+	
 
 }
