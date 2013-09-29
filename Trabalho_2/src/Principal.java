@@ -1,22 +1,35 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Principal {
 
+	public static Triangulo triangulo = new Triangulo();
+	public static Imagem imagem = new Imagem();
+	public static Cor cor = new Cor();
+	public static Circulo circulo = new Circulo();
+	public static Reta reta = new Reta();
+	public static Retangulo retangulo = new Retangulo();
+	
+	
+	
+	
 	
 	public static void main(String[] args) {
 		
 		String cmd = "";
 		Scanner scan = new Scanner(System.in);
 		
-		while(!cmd.equals("fim")){
+		while(!cmd.toLowerCase().equals("fim")){
 			
 			String[] parametros = scan.nextLine().split(" ");
 			cmd = parametros[0].trim();
 			
 			if ((parametros.length < 2)){
 				
-				if(cmd.equals("fim"));
+				if(cmd.toLowerCase().equals("fim"));
 				else{
 					System.out.println("Paramentros incorretos");
 					}
@@ -28,7 +41,7 @@ public class Principal {
 						executaParametros(parametros);
 					
 						
-					} else if(!cmd.equals("fim")){
+					} else if(!cmd.toLowerCase().equals("fim")){
 						System.out.println("Paramentros incorretos");
 					}else{
 						System.out.println("Paramentros incorretos");
@@ -147,7 +160,7 @@ public class Principal {
 
 	private static void executaParametros(String[] parametros) {
 
-		System.out.println(parametros[0]);
+		
 		if(parametros[0].toLowerCase().trim().equals("imagem")){
 			
 			criarImagem(parametros);
@@ -194,66 +207,123 @@ public class Principal {
 
 	private static void criarImagem(String[] parametros) {
 		
-				
-			System.out.println("funcionou");
-	
+			int[][] matriz = new int[Integer.parseInt(parametros[1])][Integer.parseInt(parametros[1])];	
+			
+			System.out.println("Imagem criada");
+			
 		
 	}
 
 	private static void criarArquivo(String[] parametros) {
+
+		String nomeArq = parametros[1]+".pnm";
+		File file = null;		
 		
-		System.out.println("funcionou");
+		try {
+			file = new File(System.getProperty("user.home")+file.separator+"Desktop"+file.separator+nomeArq);
+			boolean criar = file.createNewFile();
+			if(criar==true)
+				System.out.println(nomeArq+" criado com sucesso");
+			else if (file.exists()==true)
+				System.out.println(nomeArq+" já existe");
+			else
+				System.out.println("Falha ao criar "+nomeArq);
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+		System.out.println("Arquivo salvo");
 	}
 
 	private static void criarCor(String[] parametros) {
 		
-		System.out.println("funcionou");
+		if(parametros.length > 2){
+			cor.R = Integer.parseInt(parametros[1]);
+			cor.G = Integer.parseInt(parametros[2]);
+			cor.B = Integer.parseInt(parametros[3]);
+		} else {
+			
+			cor.gray = Integer.parseInt(parametros[1]);
+			
+		}
+		
+		System.out.println("Parametro armazenado");
 		
 	}
 
 	private static void criarCirculo(String[] parametros) {
 		
-				
-			Circulo c = new Circulo();
-			System.out.println("funcionou");
+		Ponto p = new Ponto();
+		
+		p.x = Integer.parseInt(parametros[1]);
+		p.y = Integer.parseInt(parametros[2]);
+		circulo.setRaio(Integer.parseInt(parametros[3]));
+		circulo.setCentro(p);
+		circulo.draw(cor);
+		
+		System.out.println("Parametro armazenado");
 	
 		
 	}
 
 	private static void criarReta(String[] parametros) {
-	
-			Reta r = new Reta();
-			System.out.println("funcionou");
+		
+		Ponto[] p = new Ponto[2];
+		int cont = 1;
+					
+		for (int i = 0; i < p.length; i++) {
+				
+			p[i].x = Integer.parseInt(parametros[cont]);
+			cont = cont + 1;
+			p[i].y = Integer.parseInt(parametros[cont]);
+			cont = cont + 1;
+		}
+		
+		
+		reta.setVertices(p[0], p[1]); 
+		reta.draw(cor);
+		
+		System.out.println("Parametro armazenado");
 
 	}
 
 	private static void criarRetangulo(String[] parametros) {
 		
-			Retangulo r = new Retangulo();
-			System.out.println("funcionou");
+		
+		Ponto[] p = new Ponto[2];
+		int cont = 1;
+		
+		for (int i = 0; i < p.length; i++) {
+			
+			p[i].x = Integer.parseInt(parametros[cont]);
+			cont++;
+			p[i].y = Integer.parseInt(parametros[cont]);								
+			cont++;
+		
+		}
+		
+		retangulo.setVertices(p[0], p[1]);
+		retangulo.draw(cor);
+		System.out.println("Parametro armazenado");
 	}
 
 	private static void criarTriangulo(String[] parametros) {
 		
 			
 			Ponto[] p = new Ponto[3];
+			int cont = 1;
 			
-			/*for (int i = 0; i < p.length; i++) {
-				
-				for (int j = 1; j < parametros.length; j++) {
-					
-					p[i].x = Integer.parseInt(parametros[j]);
-					j++;
-					p[i].y = Integer.parseInt(parametros[j]);								
-				}
+			for (int i = 0; i < p.length; i++) {
+			
+				p[i].x = Integer.parseInt(parametros[cont]);
+				cont++;
+				p[i].y = Integer.parseInt(parametros[cont]);								
+				cont++;
 			
 			}
 			
-			Triangulo t = new Triangulo();
-			
-			t.setVertices(p[0], p[1], p[2]);
-			*/
-			System.out.println("funcionou");
+			triangulo.setVertices(p[0], p[1], p[2]);
+			triangulo.draw(cor);
+			System.out.println("Parametro armazenado");
 
 	}
 
