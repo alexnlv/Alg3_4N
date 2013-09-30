@@ -12,7 +12,7 @@ public class Principal {
 	public static Circulo circulo = new Circulo();
 	public static Reta reta = new Reta();
 	public static Retangulo retangulo = new Retangulo();
-	
+	public static String teste = null;
 	
 	
 	
