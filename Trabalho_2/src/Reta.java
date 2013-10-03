@@ -1,8 +1,23 @@
+import java.awt.Image;
+
 
 public class Reta extends Shape{
+		
+	private Ponto p0;
+	private Ponto p1;
 	
+				
 	public void setVertices(Ponto p0, Ponto p1){
-			
+		
+		this.p0 = p0;
+		this.p1 = p1;
+	}
+	
+	public void drawReta(Imagem img, Cor c) throws Exception{
+		
+		img.setPixel(p0, c);
+		img.setPixel(p1, c);
+		
 		int dx= Math.abs(p1.x - p0.x);
 		int dy= Math.abs(p1.y - p0.y);
 		
@@ -17,8 +32,8 @@ public class Reta extends Shape{
 		
 		while (true){
 			
+			img.setPixel(p0, c);
 			
-			Principal.imagem.setPixel (p0, Principal.cor);
 			if (p0.x == p1.x && p0.y == p1.y) break;
 			int e2 = 2 * err;
 
@@ -26,15 +41,15 @@ public class Reta extends Shape{
 			err = err - dy;
 			p0.x = p0.x + sx;
 			}
-			Principal.imagem.setPixel (p0, Principal.cor);
+
 			if (p0.x == p1.x && p0.y == p1.y) break;
-			Principal.imagem.setPixel (p0, Principal.cor);
 
 			if (e2 <dx) {
 			err = err + dy;
 			p0.y = p0.y + sy;
+			
 			}
-
+				
 		}
 	
 	}	

@@ -5,15 +5,17 @@ import java.util.Scanner;
 
 
 public class Principal {
-
-	public static Triangulo triangulo = new Triangulo();
-	public static Imagem imagem = new Imagem();
-	public static Cor cor = new Cor();
+	
+	public static Cor cor = new Cor(0);
+	public static Imagem imagem = new Imagem(0, 0, cor);
+	/*public static Triangulo triangulo = new Triangulo();
+	
+	public static Cor cor = new Cor(0);
 	public static Circulo circulo = new Circulo();
 	public static Reta reta = new Reta();
 	public static Retangulo retangulo = new Retangulo();
 	public static String teste = null;
-	
+	*/
 	
 	
 	
@@ -185,6 +187,9 @@ public class Principal {
 		
 		if(parametros[0].toLowerCase().trim().equals("reta")){
 			
+			Reta rt = new Reta();
+			rt.draw(cor, imagem);
+			
 			criarReta(parametros);
 			
 		}
@@ -235,11 +240,13 @@ public class Principal {
 	}
 
 	private static void criarCor(String[] parametros) {
+
+		Cor cor = new Cor(0);
 		
 		if(parametros.length > 2){
-			cor.R = Integer.parseInt(parametros[1]);
-			cor.G = Integer.parseInt(parametros[2]);
-			cor.B = Integer.parseInt(parametros[3]);
+			cor.red = Integer.parseInt(parametros[1]);
+			cor.green = Integer.parseInt(parametros[2]);
+			cor.blue = Integer.parseInt(parametros[3]);
 		} else {
 			
 			cor.gray = Integer.parseInt(parametros[1]);
@@ -256,10 +263,10 @@ public class Principal {
 		
 		p.x = Integer.parseInt(parametros[1]);
 		p.y = Integer.parseInt(parametros[2]);
-		circulo.setRaio(Integer.parseInt(parametros[3]));
+		/*circulo.setRaio(Integer.parseInt(parametros[3]));
 		circulo.setCentro(p);
 		circulo.draw(cor);
-		
+		*/
 		System.out.println("Parametro armazenado");
 	
 		
@@ -279,8 +286,9 @@ public class Principal {
 		}
 		
 		
-		reta.setVertices(p[0], p[1]); 
+		/*reta.setVertices(p[0], p[1]); 
 		reta.draw(cor);
+		*/
 		
 		System.out.println("Parametro armazenado");
 
@@ -301,8 +309,9 @@ public class Principal {
 		
 		}
 		
-		retangulo.setVertices(p[0], p[1]);
+		/*retangulo.setVertices(p[0], p[1]);
 		retangulo.draw(cor);
+		*/
 		System.out.println("Parametro armazenado");
 	}
 
@@ -321,8 +330,9 @@ public class Principal {
 			
 			}
 			
-			triangulo.setVertices(p[0], p[1], p[2]);
+			/*triangulo.setVertices(p[0], p[1], p[2]);
 			triangulo.draw(cor);
+			*/
 			System.out.println("Parametro armazenado");
 
 	}
