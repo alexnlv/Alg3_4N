@@ -14,10 +14,7 @@ public class Reta extends Shape{
 	}
 	
 	public void drawReta(Imagem img, Cor c) throws Exception{
-		
-		img.setPixel(p0, c);
-		img.setPixel(p1, c);
-		
+				
 		int dx= Math.abs(p1.x - p0.x);
 		int dy= Math.abs(p1.y - p0.y);
 		
@@ -41,7 +38,7 @@ public class Reta extends Shape{
 			err = err - dy;
 			p0.x = p0.x + sx;
 			}
-
+			img.setPixel(p0, c);
 			if (p0.x == p1.x && p0.y == p1.y) break;
 
 			if (e2 <dx) {

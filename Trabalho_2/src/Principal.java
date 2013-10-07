@@ -8,14 +8,15 @@ public class Principal {
 	
 	public static Cor cor = new Cor(0);
 	public static Imagem imagem = new Imagem(0, 0, cor);
-	/*public static Triangulo triangulo = new Triangulo();
-	
-	public static Cor cor = new Cor(0);
-	public static Circulo circulo = new Circulo();
 	public static Reta reta = new Reta();
+	public static Triangulo triangulo = new Triangulo();
+	
+	//public static Cor cor = new Cor(0);
+	public static Circulo circulo = new Circulo();
+	
 	public static Retangulo retangulo = new Retangulo();
 	public static String teste = null;
-	*/
+	
 	
 	
 	
@@ -43,7 +44,7 @@ public class Principal {
 						executaParametros(parametros);
 					
 						
-					} else if(!cmd.toLowerCase().equals("fim")){
+					} else if(cmd.toLowerCase().equals("fim")){
 						System.out.println("Paramentros incorretos");
 					}else{
 						System.out.println("Paramentros incorretos");
@@ -79,18 +80,24 @@ public class Principal {
 			
 			if(parametros.length == 4){
 				
-				if(parametros[1].toLowerCase().trim().equals("r") &&
-					parametros[2].toLowerCase().trim().equals("g") &&
-						parametros[3].toLowerCase().trim().equals("b"))	resultado = true;
+				for (int i = 1, cont = 1; i < parametros.length; i++) {
+					
+					if(ehInteiro(parametros[i])){
+						
+						if((Integer.parseInt(parametros[i]) >= 0 && Integer.parseInt(parametros[i]) <= 255)){
+					
+						cont++;
+						}
+					}		
+					if(cont == 4) resultado = true;		
+
 				}				
+			}
 			
 			if(parametros.length == 2){
-				if(parametros[1].toLowerCase().trim().equals("g")) resultado = true;
-			}
-				
-				
-			}
-			
+				if((Integer.parseInt(parametros[1]) >= 0 && Integer.parseInt(parametros[1]) <= 255)) resultado = true;
+			}	
+		}	
 		if((parametros[0].toLowerCase().trim().equals("reta")) || 
 				(parametros[0].toLowerCase().trim().equals("retangulo"))){
 			
@@ -190,7 +197,12 @@ public class Principal {
 			Reta rt = new Reta();
 			rt.draw(cor, imagem);
 			
-			criarReta(parametros);
+			try {
+				criarReta(parametros);
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -212,7 +224,7 @@ public class Principal {
 
 	private static void criarImagem(String[] parametros) {
 		
-			int[][] matriz = new int[Integer.parseInt(parametros[1])][Integer.parseInt(parametros[1])];	
+			imagem = new Imagem(Integer.parseInt(parametros[1]), Integer.parseInt(parametros[2]),cor);
 			
 			System.out.println("Imagem criada");
 			
@@ -221,35 +233,27 @@ public class Principal {
 
 	private static void criarArquivo(String[] parametros) {
 
-		String nomeArq = parametros[1]+".pnm";
-		File file = null;		
-		
 		try {
-			file = new File(System.getProperty("user.home")+file.separator+"Desktop"+file.separator+nomeArq);
-			boolean criar = file.createNewFile();
-			if(criar==true)
-				System.out.println(nomeArq+" criado com sucesso");
-			else if (file.exists()==true)
-				System.out.println(nomeArq+" já existe");
-			else
-				System.out.println("Falha ao criar "+nomeArq);
+			imagem.Salvar(parametros[1]);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+		}
+	
 		System.out.println("Arquivo salvo");
 	}
 
 	private static void criarCor(String[] parametros) {
 
-		Cor cor = new Cor(0);
+		
 		
 		if(parametros.length > 2){
-			cor.red = Integer.parseInt(parametros[1]);
-			cor.green = Integer.parseInt(parametros[2]);
-			cor.blue = Integer.parseInt(parametros[3]);
+			Cor cor = new Cor(Integer.parseInt(parametros[1]),
+								Integer.parseInt(parametros[2]),
+								Integer.parseInt(parametros[3]));
 		} else {
 			
-			cor.gray = Integer.parseInt(parametros[1]);
+			Cor cor = new Cor(Integer.parseInt(parametros[1]));
 			
 		}
 		
@@ -272,11 +276,13 @@ public class Principal {
 		
 	}
 
-	private static void criarReta(String[] parametros) {
+	private static void criarReta(String[] parametros) throws Exception {
 		
 		Ponto[] p = new Ponto[2];
-		int cont = 1;
-					
+		p[0] = new Ponto();
+		p[1] = new Ponto();
+		int cont = 1; 
+						
 		for (int i = 0; i < p.length; i++) {
 				
 			p[i].x = Integer.parseInt(parametros[cont]);
@@ -286,9 +292,8 @@ public class Principal {
 		}
 		
 		
-		/*reta.setVertices(p[0], p[1]); 
-		reta.draw(cor);
-		*/
+		reta.setVertices(p[0], p[1]); 
+		reta.drawReta(imagem, cor);
 		
 		System.out.println("Parametro armazenado");
 
