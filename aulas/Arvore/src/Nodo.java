@@ -9,7 +9,7 @@ public class Nodo {
 		
 		int chave; //pode ser qualquer tipo
 		
-		regra balanceamento AVL
+		/*regra balanceamento AVL
 		Abs(H(e) - H(d)) < 2
 		Abs = valor absoluto
 		
