@@ -42,7 +42,53 @@ public class RedBlack {
 	 * 		b) P e N são filhos a direita
 	 * 		- Troca cor de P e G 
 	 * 		- Rotacionar a esquerda  em G
-	 * 		  
+	 * 
+	 * REMOÇÃO EM UMA ARVORE RED-BLACK
+	 * 
+	 * Caso 1 - N é a raiz - N <- B
+	 * Caso 2 - Todos 
+	 * 			- Trocar cor de P e S 
+	 * 			- Rotacionar em P em dir a N
+	 * 			- Seguir p/ caso 3
+	 * 
+	 * Caso 3 - Todos são B
+	 * 			- S <- R
+	 * 			- Volto p/ caso 1 em P
+	 * 
+	 * Caso 4 - Todos são B exceto o P
+	 * 			- Trocar a cor de P com S
+	 * 
+	 * Caso 5 - S e Sr são B e Sl é R
+	 * 			- Trocar cor de S com Sl
+	 * 			- Rotacionar em direção a Sr
+	 * 			- Segue para caso 6
+	 * Caso 6 - 
+	 * 			- S recebe cor de P
+	 * 			- P e Sr viram B
+	 * 			- Rotacionar em p em direção a N
+	 * 			
+	 * 
+	 * --------------------------------//----------------------
+	 * 					3º TRABALHO
+	 * 	Implementar um sistema de consulta de valores a partir de chaves
+	 * , onde a estrutura que armazena os valores é uma Red Black Tree
+	 * 	No inicio do sistema deve ser lido um arquivo que possui
+	 * um registro por linha.
+	 * 	Cada registro é composto por um par chave-valor, no seguinte formato:
+	 * chave = valor
+	 * 	Apos a criação da arvore, com o conteudo do arquivo, o sistema deve permitir:
+	 *  - Consulta de um valor, dado uma chave (comando "search")
+	 *  - Inclusão de um par chave-valor (comando "insert")
+	 *  - Exclusão de um par chave-valor, dada uma chave (comando "remove")
+	 *  - Chaves e valores são do tipo String.
+	 *  
+	 *   ENTREGA: 10/11/2013
+	 *   
+	 *    Obs.: Um registro por linha
+	 *    começar implementando uma arvore binaria de busca e depois implementar a inserção de parametros.
+	 *    Procurar um metodo de saber se a arvore está sendo implementada.
+	 *    Se quiser pegar o algoritmo do wikipedia (em ingles).		  
+	 * 
 	 */
 
 }
