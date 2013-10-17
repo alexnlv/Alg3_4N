@@ -14,6 +14,8 @@ public class Reta extends Shape{
 	}
 	
 	public void drawReta(Imagem img, Cor c) throws Exception{
+		
+		//Bresenham(Principal.imagem, c); bresenham é o algoritmo que pode ser pego na internet
 				
 		int dx= Math.abs(p1.x - p0.x);
 		int dy= Math.abs(p1.y - p0.y);

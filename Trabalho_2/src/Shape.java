@@ -1,14 +1,14 @@
 
 public abstract class Shape {
 	
-	private Imagem imagem;
+	//private Imagem imagem;
 	private Cor c;
 	
 	
-	public void draw(Cor c, Imagem imagem){
+	public void draw(Cor c){
 		
 		this.c = c;
-		this.imagem = imagem;
+		//this.imagem = imagem;
 		
 	}
 

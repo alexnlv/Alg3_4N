@@ -1,7 +1,7 @@
 
 public class Cor {
 	
-	public int red = 0;
+	/*public int red = 0;
 	public int green = 0;
 	public int blue = 0;
 	public int gray = 0;
@@ -29,6 +29,10 @@ public class Cor {
 		this.gray = gray;
 		
 		
+	}*/
+
+	public Cor() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	
