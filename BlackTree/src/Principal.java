@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Principal {
@@ -16,15 +17,41 @@ public class Principal {
         BufferedReader lerArq = new BufferedReader(arq);
         Arvore arv = new Arvore();
         String linha = lerArq.readLine();
-               
+        Scanner aux = new Scanner(System.in);
+        
+        
         while (linha!= null) {
         	
             String parametros[] =  linha.split(SEPARADOR);
-            arv.insere(parametros[0], parametros[1]);
+            arv.inserir(parametros[0].toLowerCase(), parametros[1].toLowerCase());
             
             linha = lerArq.readLine();            
         }
-
+        
+        while (!aux.toString().toLowerCase().equals("fim")){
+        	
+        	
+        	
+        	switch (aux.next().toLowerCase()) {
+			
+        	case "inserir":
+        		arv.inserir(aux.next(), aux.next());
+				break;
+        	
+        	case "excluir":			
+        		arv.excluir(aux.next());
+				break;
+				
+        	case "consultar":
+        		arv.consultar(aux.next());
+			default:
+				break;
+			}
+        	
+        	
+        }
+        	
+        	
 	}
 
 }
