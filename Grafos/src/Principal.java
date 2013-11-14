@@ -66,9 +66,35 @@ public class Principal {
 		 *****--faz algo depois dos filhos
 		 * 
 		 * 
+		 * ------Arvore geradora minima (prism)----------
+		 * --Criar:
+		 * 	Lista de adjacencias
+		 * 	Lista de nodos visitados
+		 * 	Lista de nodos visitaveis 
+		 * 	Lista arestas ou arvore 
+		 * --Escolher um nodo qualquer
+		 * --Enquanto existir nodo não vistado
+		 * 		--Escolher nodo da lista de visitaveis com
+		 * 		aresta de menor valor a partir dos visitados
+		 *    
+		 * 	
+		 * ---Arvore Dijkstra's algorithm
+		 * 		en.wikipedia.org
+		 * 			pseudocode
+		 * --Criar:
+		 * 	Lista de vertices anteriores
+		 * 	Lista de vertices P
+		 * 	Lista de nodos visitados
 		 * 
+		 * Inicio:
+		 * 	Iniciar as estruturas
+		 * 		anteriores com   
+		 * trabalho vai ser ler um arquivo que cada linha tem
+		 * 3 valores: vertice, vertice e peso (custo)
+		 * serão mais de 10 linhas
 		 * 
-		 * 
+		 * o programa tera que mostrar o caminho com o menor custo.
+		 *  
 		 * 
 		 * 
 		 * 
